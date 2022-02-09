@@ -1,17 +1,15 @@
 import csv
 
-customer_country = open("customers.csv", "r")
+infile = open("customers.csv", "r")
 
-customer_country = csv.reader(customer_country, delimiter=",")
+customer_file = csv.reader(infile, delimiter=",")
 
-outfile = open(customer_country, "w")
+next(customer_file)
 
-next(customer_country)
+outfile = open("customer_country.csv", "w")
 
-counter = 0
-for record in customer_country:
-    outfile.write(record[1] + "," + record[2] + "," + record[4], +"\n")
-    counter = 1
-
-print(counter)
-outfile.close()
+for record in customer_file:
+    FirstName = record[1]
+    LastName = record[2]
+    Country = record[4]
+    outfile.write(record[1] + " " + record[2] + " " + record[4] + "\n")
